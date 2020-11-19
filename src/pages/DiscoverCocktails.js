@@ -26,7 +26,7 @@ export default function DiscoverCocktails() {
 
         fetchDate();
 
-    }, []);
+    }, [data]);
 
     return (
         <div>
