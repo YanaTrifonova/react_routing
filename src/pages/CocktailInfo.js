@@ -40,7 +40,7 @@ export default function CocktailInfo() {
             }
         }
         fetchDate();
-    }, [params.cocktailId, ingredients]);
+    }, []);
 
     return (
 
