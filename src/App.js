@@ -6,12 +6,14 @@ import DiscoverCocktails from "./pages/DiscoverCocktails";
 import AboutUs from "./pages/AboutUs";
 import HomePage from "./pages/HomePage";
 import NavigationBar from "./components/NavigationBar";
+import CocktailInfo from "./pages/CocktailInfo";
 
 function App() {
     return (
         <div className="App">
             <NavigationBar/>
             <Switch>
+                <Route path="/discover/:cocktailId"  component={CocktailInfo} />
                 <Route path="/discover" component={DiscoverCocktails}/>
                 <Route path="/about" component={AboutUs}/>
                 <Route path="/" component={HomePage}/>
