@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-import {Tab } from "react-bootstrap"
+import {Tab} from "react-bootstrap"
 import {getIngredients} from "../helpers/getIngredients";
 import {getMeasure} from "../helpers/getMeasure";
 
@@ -18,14 +18,12 @@ export default function CocktailInfo() {
     const [measure, setMeasure] = useState([])
 
     useEffect(() => {
-        const fetchDate = async () => {
-            try {
+        try {
+            const fetchDate = async () => {
                 const response = await Axios.get(
                     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.cocktailId}`)
-                console.log("response", response.data);
 
                 const data = response.data.drinks[0];
-                console.log(data);
 
                 setCocktailInfo(data);
 
@@ -34,13 +32,12 @@ export default function CocktailInfo() {
 
                 const arrayOfMeasure = getMeasure(ingredients, data);
                 setMeasure(arrayOfMeasure);
-
-            } catch (err) {
-                console.warn(err);
             }
+            fetchDate();
+        } catch (e) {
+            console.warn(e);
         }
-        fetchDate();
-    }, []);
+    }, [ingredients, params.cocktailId]);
 
     return (
 

@@ -7,8 +7,9 @@ export default function DiscoverCocktails() {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        const fetchDate = async () => {
-            try {
+        try {
+            const fetchDate = async () => {
+
                 const response = await Axios.get(url);
 
                 const drinks = response.data;
@@ -16,23 +17,18 @@ export default function DiscoverCocktails() {
                 let getCocktailsToArray = Object.keys(getCocktails).map((k) => getCocktails[k])
 
                 setData(getCocktailsToArray);
-
-                console.log(`Get information from API: ${data.map((t) => console.log(t))}`);
-
-            } catch (err) {
-                console.warn(err);
             }
+
+            fetchDate();
+        } catch (e) {
+            console.warn(e);
         }
-
-        fetchDate();
-
-    // eslint-disable-next-line
     }, []);
 
     return (
         <div>
             <h1>DiscoverCocktails</h1>
-            <CocktailCard data={data} />
+            <CocktailCard data={data}/>
         </div>
 
     );
