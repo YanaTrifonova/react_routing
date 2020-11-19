@@ -26,6 +26,7 @@ export default function DiscoverCocktails() {
 
         fetchDate();
 
+    // eslint-disable-next-line
     }, []);
 
     return (

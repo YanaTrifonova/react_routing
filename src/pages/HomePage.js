@@ -38,6 +38,7 @@ export default function HomePage() {
 
         fetchDate();
 
+    // eslint-disable-next-line
     }, []);
 
     return (
