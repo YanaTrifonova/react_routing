@@ -13,18 +13,17 @@ import {getMeasure} from "../helpers/getMeasure";
 
 export default function CocktailInfo() {
     const params = useParams();
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.cocktailId}`;
     const [cocktailInfo, setCocktailInfo] = useState({});
-    const [ingredients, setIngredients] = useState([])
-    const [measure, setMeasure] = useState([])
+    const [ingredients, setIngredients] = useState([]);
+    const [measure, setMeasure] = useState([]);
 
     useEffect(() => {
-        try {
-            const fetchDate = async () => {
-                const response = await Axios.get(
-                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.cocktailId}`)
+        const fetchDate = async () => {
+            try {
+                const response = await Axios.get(url);
 
                 const data = response.data.drinks[0];
-
                 setCocktailInfo(data);
 
                 const arrayOfIngredients = getIngredients(data);
@@ -32,15 +31,14 @@ export default function CocktailInfo() {
 
                 const arrayOfMeasure = getMeasure(ingredients, data);
                 setMeasure(arrayOfMeasure);
+            } catch (e) {
+                console.warn(e);
             }
-            fetchDate();
-        } catch (e) {
-            console.warn(e);
         }
-    }, [ingredients, params.cocktailId]);
+        fetchDate().finally();
+    },);
 
     return (
-
         <Jumbotron fluid>
             <Image style={{maxHeight: '200px'}} src={cocktailInfo.strDrinkThumb} fluid roundedCircle/>
             <Container>
@@ -49,7 +47,7 @@ export default function CocktailInfo() {
             </Container>
             <ListGroup style={{maxWidth: '300px', margin: '0 auto'}}>
                 {measure.map((measure, index) => {
-                    return <ListGroup.Item>{`${measure} of ${ingredients[index]}`}</ListGroup.Item>
+                    return <ListGroup.Item key={index}>{`${measure} of ${ingredients[index]}`}</ListGroup.Item>
                 })}
             </ListGroup>
             <div style={{margin: '80px 40px 40px 40px'}}>
