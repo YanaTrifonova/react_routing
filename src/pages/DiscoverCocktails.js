@@ -27,7 +27,7 @@ export default function DiscoverCocktails() {
 
     return (
         <div>
-            <h1>DiscoverCocktails</h1>
+            <h1>Discover Cocktails</h1>
             <CocktailCard data={data}/>
         </div>
 

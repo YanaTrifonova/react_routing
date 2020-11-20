@@ -7,6 +7,7 @@ import AboutUs from "./pages/AboutUs";
 import HomePage from "./pages/HomePage";
 import NavigationBar from "./components/NavigationBar";
 import CocktailInfo from "./pages/CocktailInfo";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <Switch>
                 <Route path="/discover/:cocktailId"  component={CocktailInfo} />
                 <Route path="/discover" component={DiscoverCocktails}/>
+                <Route path="/search/:params" component={SearchResults}/>
                 <Route path="/about" component={AboutUs}/>
                 <Route path="/" component={HomePage}/>
             </Switch>
