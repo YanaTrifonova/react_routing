@@ -24,14 +24,14 @@ export default function SearchResults() {
     }
 
     useEffect(() => {
-        if (params) {
-            search(params).then(r => console.log(r))
+        if (userInput) {
+            search(userInput).then(r => console.log(r))
         }
-    }, [params])
+    }, )
 
     return (
         <div>
-            <h1>Search result for {userInput}</h1>
+            <h1>Search result for: {userInput}...</h1>
             {searchResults !== null ? <CocktailCard data={searchResults}/> : <h2>Sorry! Nothing was found.</h2>}
         </div>
     );

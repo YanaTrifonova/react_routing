@@ -26,7 +26,7 @@ export default function NavigationBar() {
                 <Nav className="mr-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/discover">Discover</Nav.Link>
-                    <Nav.Link href="/about">About us</Nav.Link>
+                    <Nav.Link href="/about">About me</Nav.Link>
                 </Nav>
                 <Form inline onSubmit={onClickHandler}>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" value={inputText}
