@@ -13,7 +13,7 @@ import {getMeasure} from "../helpers/getMeasure";
 
 export default function CocktailInfo() {
     const params = useParams();
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.cocktailId}`;
+
     const [cocktailInfo, setCocktailInfo] = useState({});
     const [ingredients, setIngredients] = useState([]);
     const [measure, setMeasure] = useState([]);
@@ -21,6 +21,7 @@ export default function CocktailInfo() {
     useEffect(() => {
         const fetchDate = async () => {
             try {
+                const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.cocktailId}`;
                 const response = await Axios.get(url);
 
                 const data = response.data.drinks[0];
@@ -29,14 +30,16 @@ export default function CocktailInfo() {
                 const arrayOfIngredients = getIngredients(data);
                 setIngredients(arrayOfIngredients);
 
-                const arrayOfMeasure = getMeasure(ingredients, data);
+                const arrayOfMeasure = getMeasure(arrayOfIngredients, data);
                 setMeasure(arrayOfMeasure);
             } catch (e) {
                 console.warn(e);
             }
         }
         fetchDate().finally();
-    },);
+    }, [params.cocktailId]);
+
+    console.log('cocktail info', cocktailInfo);
 
     return (
         <Jumbotron fluid>

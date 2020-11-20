@@ -25,7 +25,7 @@ export default function HomePage() {
     return (
         <div>
             <h1>Cocktail of the day:</h1>
-            <CocktailCard data={data} />
+            <CocktailCard data={data}/>
         </div>
 
     );

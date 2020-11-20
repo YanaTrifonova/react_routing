@@ -1,4 +1,5 @@
 export function getIngredients(data) {
+    console.log("getIngredients");
     let arr = [];
     let i = 0;
 

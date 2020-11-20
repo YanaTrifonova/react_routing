@@ -2,7 +2,7 @@ import React from "react";
 
 import github from '../img/github.png';
 import linkedin from '../img/linkedin.png';
-import instagram from'../img/instagram.png';
+import instagram from '../img/instagram.png';
 
 export default function AboutMe() {
     const socialNetworks = [

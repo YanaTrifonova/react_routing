@@ -14,7 +14,7 @@ function App() {
         <div className="App">
             <NavigationBar/>
             <Switch>
-                <Route path="/discover/:cocktailId"  component={CocktailInfo} />
+                <Route path="/discover/:cocktailId" component={CocktailInfo}/>
                 <Route path="/discover" component={DiscoverCocktails}/>
                 <Route path="/search/:params" component={SearchResults}/>
                 <Route path="/about" component={AboutMe}/>

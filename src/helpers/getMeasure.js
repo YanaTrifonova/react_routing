@@ -1,4 +1,5 @@
 export function getMeasure(ingredients, data) {
+    console.log("getMeasure");
     let arr = [];
     let i = 0;
 

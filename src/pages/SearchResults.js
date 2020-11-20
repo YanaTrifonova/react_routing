@@ -8,7 +8,7 @@ export default function SearchResults() {
     const userInput = params["params"];
     const [searchResults, setSearchResults] = useState([]);
 
-    const search = async () => {
+    async function search(userInput) {
         console.log("search for:", userInput);
 
         try {
@@ -19,15 +19,15 @@ export default function SearchResults() {
             setSearchResults([]);
             console.warn(error);
         }
-
-        console.log("searchResults,", searchResults);
     }
 
     useEffect(() => {
         if (userInput) {
-            search(userInput).then(r => console.log(r))
+            search(userInput).finally();
         }
-    }, )
+    }, [userInput])
+
+    console.log("searchResults,", searchResults);
 
     return (
         <div>
